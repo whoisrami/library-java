@@ -1,3 +1,7 @@
+/**
+ * author: Alex Yang
+ * Recursively find both the maximum element of an array, and the minimum element
+ */
 import static java.lang.Math.abs;
 public class Extrema {
   static int maxArray(int[] A, int start, int end){
