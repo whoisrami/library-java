@@ -1,9 +1,9 @@
 /**
  * Author: Alex Yang
  * date: 8/27/2014
- * Simple implementation of a Linked List
+ * Very basic implementation of a singly Linked List
  */
-class linkedListImplementation {
+class linkedListSimple {
   public static void main (String args[]) {
     Node head = new Node(3);
     head.appendToTail(1);
