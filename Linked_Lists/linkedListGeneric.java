@@ -145,7 +145,7 @@ class linkedListGeneric<T> {
    return "";
   } else {
    StringBuilder output = new StringBuilder();
-   Node<T> tempNode = root;
+   Node<T> tempNode = this.root;
    while(tempNode.next != null) {
     output.append(tempNode.data).append(", ");
     tempNode = tempNode.next;

@@ -7,20 +7,40 @@
  * than x come before all nodes with data greater than x.
  *
  */
-class linkedListPartition<T> extends linkedListGeneric<T> {
+class LinkedListPartition<T> extends linkedListGeneric<T> {
   public static void main (String args[]) {
-    linkedListPartition<Integer> list = new linkedListPartition<Integer>();
+    LinkedListPartition<Integer> list = new LinkedListPartition<Integer>();
     list.append(1); 
-    list.append(2);
+    list.append(5);
     list.append(3);
-    list.append(4);
-    list.append(5);;
+    list.append(2);
+    list.append(5);
     System.out.println(list.toString());
-    list.partition(3);
-    System.out.println(list.toString());
+    LinkedListPartition<Integer> partitionedList = list.partition(3);
+    System.out.println(partitionedList.toString());
   }
 
-  public void partition (int x) {
-    return;
+  public LinkedListPartition<Integer> partition (int x) {
+    LinkedListPartition<Integer> ltXList = new LinkedListPartition<Integer>();
+    LinkedListPartition<Integer> gteXList = new LinkedListPartition<Integer>(); 
+    Node<T> n = this.root;
+
+    while (n != null) {
+      int data = (Integer)n.data;
+      if (data < x) {
+        ltXList.append(data);
+      } else {
+        gteXList.append(data);
+      }
+      n = n.next;
+    }
+    //append both lists together by finding last element of ltXList and settings its next to the root of gteXList
+    Node<Integer> beforeNode = ltXList.root; 
+    if (beforeNode == null) return null;
+    while (beforeNode.next != null) {
+      beforeNode = beforeNode.next;
+    } 
+    beforeNode.next = gteXList.root;
+    return ltXList;
   }
 }
