@@ -9,8 +9,7 @@
 class linkedListGeneric<T> {
   public static void main (String args[]) {
     linkedListGeneric<Integer> list = new linkedListGeneric<Integer>();
-    list.append(1);
-    System.out.println(list.toString());
+    list.append(1); 
     list.append(2);
     list.append(3);
     list.append(4);
