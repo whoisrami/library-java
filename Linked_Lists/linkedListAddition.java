@@ -1,8 +1,9 @@
 /**
  * Author: Alex Yang
  * Date: 9/1/2014
- * Dependencies: 
+ * Dependencies:
  *   - linkedListGeneric.java
+ *   - Node.java
  * Given two linked lists, where each list represents a series of digits, write code to
  * "add" the two lists together.
  *
@@ -14,13 +15,13 @@ class linkedListAddition<T> extends linkedListGeneric<T> {
   public static void main (String args[]) {
     //617
     linkedListAddition<Integer> list1 = new linkedListAddition<Integer>();
-    list1.append(6); 
+    list1.append(6);
     list1.append(1);
     list1.append(7);
-    
+
     //295
     linkedListAddition<Integer> list2 = new linkedListAddition<Integer>();
-    list2.append(2); 
+    list2.append(2);
     list2.append(9);
     list2.append(5);
 
@@ -29,40 +30,31 @@ class linkedListAddition<T> extends linkedListGeneric<T> {
 
     //617 + 295 = 912
     // Node<Integer> head = additionBackward(list1.root, list2.root, 0);
-    // linkedListAddition<Integer> sumList = new linkedListAddition<Integer>(); 
+    // linkedListAddition<Integer> sumList = new linkedListAddition<Integer>();
     // sumList.root = head;
     // System.out.println(sumList.toString());
 
     //617 + 295 = 912
     Node<Integer> head = additionForward(list1.root, list2.root, 0);
-    linkedListAddition<Integer> sumList = new linkedListAddition<Integer>(); 
+    linkedListAddition<Integer> sumList = new linkedListAddition<Integer>();
     sumList.root = head;
     System.out.println(sumList.toString());
   }
 
   static Node<Integer> additionBackward (Node<Integer> l1, Node<Integer> l2, int carry) {
     //base case
-    if (l1 == null && l2 == null && carry == 0) {
-      return null;
-    }
+    if (l1 == null && l2 == null && carry == 0) return null;
 
     int value = carry;
-    if (l1 != null) {
-      value += l1.data;
-    } 
-
-    if (l2 != null) {
-      value += l2.data;
-    }
+    if (l1 != null) value += l1.data;
+    if (l2 != null) value += l2.data;
 
     carry = 0;
-    if (value >= 10) {
-      carry = 1;
-    }  
-    Node<Integer> result = new Node<Integer>(value%10);
+    if (value >= 10) carry = 1;
 
+    Node<Integer> result = new Node<Integer>(value%10);
     if (l1 != null || l2 != null) {
-      Node<Integer> digit = additionBackward(l1 != null ? l1.next : null, 
+      Node<Integer> digit = additionBackward(l1 != null ? l1.next : null,
                                              l2 != null ? l2.next : null,
                                              carry);
        result.next = digit;
@@ -82,7 +74,7 @@ class linkedListAddition<T> extends linkedListGeneric<T> {
     } else {
       l2 = padList(l2, sizeL1 - sizeL2);
     }
-    
+
     PartialSum sum = addListRecursive(l1, l2);
 
     //append carry in front if one left over
@@ -99,15 +91,12 @@ class linkedListAddition<T> extends linkedListGeneric<T> {
 
   static PartialSum addListRecursive (Node<Integer> l1, Node<Integer> l2) {
     //base case
-    if (l1 == null && l2 == null) {
-      return new PartialSum();
-    }
-    
+    if (l1 == null && l2 == null) return new PartialSum();
     PartialSum sum = addListRecursive(l1.next, l2.next);
 
     //add the two data inside the nodes together, and carry if needed
     //set carry, if needed
-    //return partial sum 
+    //return partial sum
     int value = sum.carry;
     value += l1.data;
     value += l2.data;
@@ -117,11 +106,11 @@ class linkedListAddition<T> extends linkedListGeneric<T> {
     } else {
       sum.carry = 0;
     }
-    
+
     //insert result value at head of linked list to be returned
     Node<Integer> result = new Node<Integer>(value%10);
     result.next = sum.sum;
-    sum.sum = result; 
+    sum.sum = result;
 
     return sum;
   }
