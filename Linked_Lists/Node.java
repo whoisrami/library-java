@@ -21,4 +21,14 @@ class Node<T> {
   public void setValue (T value) {
     this.data = value;
   }
+
+  public int getSize () {
+    int size = 0;
+    Node<T> n = this;
+    while(n.next != null) {
+      size++;
+      n = n.next;
+    }
+    return size;    
+  }
 }
