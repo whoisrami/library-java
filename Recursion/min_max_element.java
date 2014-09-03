@@ -3,7 +3,7 @@
  * Recursively find both the maximum element of an array, and the minimum element
  */
 import static java.lang.Math.abs;
-public class Extrema {
+public class min_max_element {
   static int maxArray(int[] A, int start, int end){
     //if only one element in array return that element
 

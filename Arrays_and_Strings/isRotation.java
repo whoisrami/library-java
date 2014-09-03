@@ -33,7 +33,7 @@ public class isRotation {
     }
 
     String bigs2 = new StringBuilder().append(s2).append(s2).toString();
-    return isSubstring(s1, bigs2);;
+    return isSubstring(s1, bigs2);
   }
 
   public static void main (String args[]) {

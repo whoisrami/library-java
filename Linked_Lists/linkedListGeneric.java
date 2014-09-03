@@ -88,7 +88,7 @@ class linkedListGeneric<T> {
       int counter = 1;
       while (n.next.next != null) {
         if (counter == position - 1 ) {
-          //shoudl be n.prev = n.next, but since we dont have prev pointer, we use
+          //should be n.prev = n.next, but since we don't have prev pointer, we use
           //position - 1 to remove the node early before we iterate onto it
           n.next = n.next.next;
           break;
