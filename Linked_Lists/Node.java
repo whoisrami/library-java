@@ -25,7 +25,7 @@ class Node<T> {
   public int getSize () {
     int size = 0;
     Node<T> n = this;
-    while(n.next != null) {
+    while(n != null) {
       size++;
       n = n.next;
     }

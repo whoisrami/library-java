@@ -7,7 +7,7 @@
  * Given linked list, detect if it is a palindrome.
  * Two solutions,
  * iterative - assuming we do not know the size of the list
- * recursive - assuming we do not know the size of the list
+ * recursive - assuming we know the size of the list
  * if we do have the size, a simple for loop iterating through the first half of the list, reversing then comparing would suffice.
  */
 import java.util.Stack;
@@ -26,6 +26,8 @@ class linkedListPalindrome<T> extends linkedListGeneric<T> {
     list.append(1);
     System.out.println(list.toString());
     System.out.println(isPalindromeIterative(list.root));
+    System.out.println(isPalindrome(list.root));
+    System.out.println(list.root.getSize());
   }
 
   static boolean isPalindromeIterative (Node<Integer> head) {
@@ -56,5 +58,40 @@ class linkedListPalindrome<T> extends linkedListGeneric<T> {
     }
 
     return true;
+  }
+
+  //TODO: review this recursive solution again later
+  static Result isPalindromeRecursive (Node<Integer> head, int length) {
+    if (head == null || length == 0) {
+      return new Result(null, true);
+    } else if (length == 1) {
+      return new Result(head.next, true);
+    } else if (length == 2) {
+      return new Result(head.next.next, head.data == head.next.data);
+    }
+
+    Result res = isPalindromeRecursive(head.next, length - 2);
+    if (!res.result || res.node == null) {
+      return res;
+    } else {
+      res.result = head.data == res.node.data;
+      res.node = res.node.next;
+      return res;
+    }
+  }
+
+  static boolean isPalindrome (Node<Integer> head) {
+    Result p = isPalindromeRecursive(head, head.getSize());
+    return p.result;
+  }
+}
+
+class Result {
+  public Node<Integer> node;
+  public boolean result;
+
+  public Result(Node<Integer> node, boolean result) {
+    this.node = node;
+    this.result = result;
   }
 }
