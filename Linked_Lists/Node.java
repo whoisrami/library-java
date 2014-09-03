@@ -31,4 +31,27 @@ class Node<T> {
     }
     return size;    
   }
+
+  //loops through starting from head, and appends at the very end
+  void append (T data) {
+    Node<T> tail = new Node<T>(data);
+    Node<T> n = this;
+
+    while (n.next != null) {
+      n = n.next;
+    }
+    n.next = tail;
+  }
+
+  //overrides toString method to print out contents of linked list
+  public String toString () {
+    StringBuilder output = new StringBuilder();
+    Node<T> tempNode = this;
+    while(tempNode.next != null) {
+      output.append(tempNode.data).append(", ");
+      tempNode = tempNode.next;
+    }
+    output.append(tempNode.data);
+    return output.toString();
+  }
 }
