@@ -4,10 +4,12 @@ import java.lang.Exception;
  * Author: Alex Yang
  * Date: 9/7/2014
  * Dependencies:
- *   - None
- * Describe how you could use a single array to implement three stacks.
- * Solution 1: Fixed size stacks
- * TODO: Solution 2: Flexible stacks (grow and shrink as needed)
+ *  - None
+ * Description:
+ *  - Describe how you could use a single array to implement three stacks.
+ * Solutions:
+ *  - Fixed size stacks
+ *  - TODO: Flexible stacks (grow and shrink as needed)
  */
 
 class ArrayThreeStacks {

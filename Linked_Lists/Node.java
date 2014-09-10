@@ -1,5 +1,33 @@
+/**
+ * Author: Alex Yang
+ * Date: 9/2014
+ * Dependencies:
+ *  - Node.java (in linked lists section)
+ * Description:
+ *  - Simple Implementation of a LinkedList, using a Node Class.
+ *  - UPDATE: 9/10/2014 added prev pointer to solve some stack problems
+ * Solutions:
+ *  - N/A
+ */
 class Node<T> {
+  public static void main (String args[]) {
+    Node<Integer> list = new Node<Integer>(1);
+    list.append(2);
+    list.append(3);
+    list.append(4);
+    list.append(5);
+    while (list != null) {
+      if (list.next != null) System.out.println("Next:" + list.next.data);
+      if (list.prev != null) System.out.println("Prev:" + list.prev.data);
+      list = list.next;
+    }
+    //System.out.println(list.toString());
+    //list.insert(3, 6);
+    //System.out.println(list.toString());
+  }
+
   Node<T> next = null;
+  Node<T> prev = null;
   T data;
 
   public Node (T value) {
@@ -40,6 +68,7 @@ class Node<T> {
     while (n.next != null) {
       n = n.next;
     }
+    tail.prev = n;
     n.next = tail;
   }
 
