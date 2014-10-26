@@ -12,18 +12,18 @@ package Quicksort;
  */
 public class Quicksort {
   public static void main(String args[]) {
-//    //test partition functionality
-//    int[] partitionTest = {0, 4, 3, 2, 5, 1};
-//
-//    Tuple tuple = partition(partitionTest, 0, partitionTest.length-1);
-//    int pivotIndex = (int)tuple.getF1() - 1;
-//    int[] partitionedArray = (int[])tuple.getF2();
-//
-//    System.out.println(pivotIndex);
-//    for (int i : partitionedArray) {
-//      System.out.print(i);
-//    }
+    //test partition functionality
+    int[] partitionTest = {0, 4, 3, 2, 5, 1};
 
+    int pivotIndex = partition(partitionTest, 0, partitionTest.length-1);
+
+    System.out.println(pivotIndex);
+    for (int i : partitionTest) {
+      System.out.print(i);
+    }
+
+    System.out.println("\n");
+    //test quicksort
     int[] test = {4,2,3,1,5};
     test = quicksort(test);
 
@@ -38,11 +38,9 @@ public class Quicksort {
 
   static int[] quicksort(int[] arr, int start, int end) {
     if (start < end) {
-      Tuple tuple = partition(arr, start, end);
-      int pivotIndex = (int)tuple.getF1();
-      int[] partitionedArray = (int[])tuple.getF2();
+      int pivotIndex = partition(arr, start, end);
 
-      int[] left = quicksort(partitionedArray, start, pivotIndex - 1);
+      int[] left = quicksort(arr, start, pivotIndex - 1);
       arr = quicksort(left, pivotIndex + 1, end);
     }
 
@@ -50,7 +48,7 @@ public class Quicksort {
   }
 
   //returns the partition element's index
-  static Tuple<Integer, int[]> partition(int[] arr, int start, int end) {
+  static int partition(int[] arr, int start, int end) {
     int pivot = (start + end)/2;
     int pivotValue = arr[pivot];
 
@@ -76,18 +74,6 @@ public class Quicksort {
     arr[end] = arr[storedIndex];
     arr[storedIndex] = finalPivot;
 
-    Tuple tuple = new Tuple<Integer, int[]>(storedIndex, arr);
-    //return final index of the pivot element
-    return tuple;
+    return storedIndex;
   }
-}
-
-class Tuple<T1,T2> {
-  private T1 f1;
-  private T2 f2;
-  public Tuple(T1 f1, T2 f2) {
-    this.f1 = f1; this.f2 = f2;
-  }
-  public T1 getF1() {return f1;}
-  public T2 getF2() {return f2;}
 }
