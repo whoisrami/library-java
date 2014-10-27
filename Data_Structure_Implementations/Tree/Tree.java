@@ -21,6 +21,10 @@ public class Tree {
     root = null;
   }
 
+  public Tree (TreeNode n) {
+    root = n;
+  }
+
   /* Insert a new node in the binary tree. If the
   root node is null, create the root node now.
                                           */

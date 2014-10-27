@@ -13,29 +13,43 @@ package Tree;
 public class TreeNode {
   public TreeNode left;
   public TreeNode right;
+  public TreeNode parent;
   int data;
 
   public TreeNode (int d) {
     data = d;
     left = null;
     right = null;
+    parent = null;
   }
+
+  public void setLeft(TreeNode n) {
+    n.parent = this;
+    this.left = n;
+  }
+
+  public void setRight(TreeNode n) {
+    n.parent = this;
+    this.right = n;
+  }
+
   /* define an insert method for TreeNodes */
   public void insert(int d){
     if (d < data){
       if (left == null) {
-        left = new TreeNode(d);
+        setLeft(new TreeNode(d));
       } else {
         left.insert(d);
       }
     }
     else if (d > data) {
       if (right == null) {
-        right = new TreeNode(d);
+        setRight(new TreeNode(d));
       } else {
         right.insert(d);
       }
     }
   }
+
 }
 
