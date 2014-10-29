@@ -10,7 +10,26 @@ import java.util.Map;
  * Dependencies:
  * - N/A
  * Description:
- * - N/A
+ * - DESCRIPTION
+ Two words are anagrams iff they contain the same letters in the same frequency.
+ For example: 'dog' and 'god' are anagrams but 'ball' and 'lab' are not.
+
+ anagram(dog) == anagram(god) == anagram(dgo)
+
+ Input:
+ ooyala
+ dog
+ cat
+ act
+ tca
+
+ Output:
+ numAnagrams(String[] input) prints:
+ ooyala: 1
+ dog: 1
+ cat: 3
+ act: 3
+ tca: 3
  * Solution:
  * - N/A
  */
