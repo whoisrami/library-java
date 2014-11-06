@@ -24,6 +24,8 @@ public class CreateLinkedListsByLevel {
     tree.insert(3);
 
     createLevelLinkedList(tree);
+    System.out.println("DFS version**********************");
+    createLevelLinkedListDFS(tree);
   }
 
   //BFS implementation
@@ -52,6 +54,8 @@ public class CreateLinkedListsByLevel {
   }
 
   //DFS Implementation
-
+  static ArrayList<LinkedList<TreeNode>> createLevelLinkedListDFS(TreeNode root) {
+    return null;
+  }
 }
 

@@ -35,6 +35,8 @@ public class DiagonalMatrix {
                       {17, 18,  19, 20}};
 
     diagonalPrint(matrix);
+    System.out.println("************2nd sol");
+    diagonalPrint2(matrix);
   }
 
   static void diagonalPrint(int[][] matrix) {
@@ -60,6 +62,24 @@ public class DiagonalMatrix {
     }
   }
 
-  //TODO: shift the rows, then iterate the columns???
+  //TODO: shift the rows, then iterate the columns
+  static void diagonalPrint2(int[][] matrix) {
+    int rows = matrix.length;
+    int columns = matrix[0].length;
+    int maximum = rows + columns - 1;
+    int diagonal;
+    int i, j;
 
+    for(diagonal = 0; diagonal < maximum; diagonal++)
+    {
+      for(i = diagonal, j = 0; i >= 0 && j <= diagonal; i--, j++)
+      { //the key is to take one away from i and add one to j on each iteration
+        //j cant ever be more than diagonal because
+        if( i >= rows || j >= columns) //this is the out of bounds check
+          continue;
+        System.out.printf("%d ", matrix[i][j]);
+      }
+      System.out.printf("\n");
+    }
+  }
 }
