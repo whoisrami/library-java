@@ -25,7 +25,14 @@ public class CreateLinkedListsByLevel {
 
     createLevelLinkedList(tree);
     System.out.println("DFS version**********************");
-    createLevelLinkedListDFS(tree);
+    ArrayList<LinkedList<TreeNode>> lists = createLevelLinkedListDFS(tree);
+
+    for (LinkedList<TreeNode> list : lists) {
+      for (TreeNode n : list) {
+        System.out.print(n.data);
+      }
+      System.out.println();
+    }
   }
 
   //BFS implementation
@@ -54,8 +61,26 @@ public class CreateLinkedListsByLevel {
   }
 
   //DFS Implementation
+  static void createLevelLinkedListDFS(TreeNode root, ArrayList<LinkedList<TreeNode>> lists, int level) {
+    if (root == null) return; //base case
+
+    LinkedList<TreeNode> list = null;
+    if (lists.size() == level) {
+      list = new LinkedList<TreeNode>();
+      lists.add(list);
+    } else {
+      list = lists.get(level);
+    }
+
+    list.add(root);
+    createLevelLinkedListDFS(root.left, lists, level + 1);
+    createLevelLinkedListDFS(root.right, lists, level + 1);
+  }
+
   static ArrayList<LinkedList<TreeNode>> createLevelLinkedListDFS(TreeNode root) {
-    return null;
+    ArrayList<LinkedList<TreeNode>> lists = new ArrayList<>();
+    createLevelLinkedListDFS(root, lists, 0);
+    return lists;
   }
 }
 
