@@ -97,6 +97,7 @@ public class LongestPalindrome {
         longest = p1;
       }
 
+      //even case
       String p2 = expandAroundCenter(s, i, i+1);
       if (p2.length() > longest.length()) {
         longest = p2;
