@@ -15,22 +15,30 @@ public class Directory extends Entry {
 
   public int size() {
     int size = 0;
-    for (Entry content: contents) {
+    for (Entry content : contents) {
       size += content.size();
     }
     return size;
   }
 
-  public void ls() {
-    for (Entry content : contents) {
-      System.out.println(content.getName());
-    }
+  public int numFiles() {
+    return contents.size();
+  }
+
+  public ArrayList<Entry> getContents() {
+    //apply any flags here
+    return contents;
+
+//    for (Entry content : contents) {
+//      System.out.println(content.getName());
+//    }
   }
 
   public void deleteEntry(Entry entry) {
     contents.remove(entry);
   }
 
+  //whatever you add has to be of type entry
   public void addEntry(Entry entry) {
     contents.add(entry);
     entry.setParent(this);
