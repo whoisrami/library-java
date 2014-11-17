@@ -49,7 +49,7 @@ public class FileSystemTest {
     testArrayList.add("b");
     testArrayList.add("c");
 
-    ArrayList<Entry> entries = fs.ls("l");
+    ArrayList<Entry> entries = fs.ls("");
     for (int i = 0; i < entries.size(); i++) {
       String value = entries.get(i).getName();
       assertEquals(value, testArrayList.get(i));

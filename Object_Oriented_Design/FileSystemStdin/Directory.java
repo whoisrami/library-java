@@ -1,4 +1,4 @@
-package FileSystemSalesForce;
+package FileSystemStdin;
 
 import java.util.HashMap;
 
@@ -32,5 +32,9 @@ public class Directory extends Entry {
     } else {
       System.out.println("Subdirectory already exists");
     }
+  }
+
+  public int numFiles() {
+    return contents.size();
   }
 }

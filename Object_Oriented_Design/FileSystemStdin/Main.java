@@ -1,8 +1,6 @@
-package FileSystemSalesForce;
+package FileSystemStdin;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 
 /**
  * Author: Alex Yang
@@ -18,8 +16,6 @@ public class Main {
   public static void main(String args[]) throws IOException {
     FileSystem fs = new FileSystem();
     String thisLine;
-
-    
 
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 

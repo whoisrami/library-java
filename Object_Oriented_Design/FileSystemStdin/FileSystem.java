@@ -1,6 +1,5 @@
-package FileSystemSalesForce;
+package FileSystemStdin;
 
-import org.apache.commons.lang.StringUtils;
 
 import java.util.*;
 
@@ -21,6 +20,7 @@ public class FileSystem {
     this.currentDirectory = new Directory("root", null);
   }
 
+  //displays entries in directory
   public ArrayList<Entry> dir() {
     Map<String, Entry> contents = new HashMap<>(currentDirectory.getContents());
     ArrayList<Entry> entries = new ArrayList<>();
@@ -44,10 +44,12 @@ public class FileSystem {
     return entries;
   }
 
+  //displays current path
   public void pwd() {
     System.out.println("Directory of " + currentDirectory.getPath() + ": ");
   }
 
+  //goes up one directory
   public void up() {
     if (currentDirectory.getParent() == null) {
       System.out.println("Cannot move up from root directory");
@@ -94,11 +96,19 @@ public class FileSystem {
     System.out.print("\n");
   }
 
-  //use StringUtils.repeat to buffer each entry with spaces
+  //use StringBuffer to pad spaces
   public String padSpaces(String str) {
     int numSpaces = 8 - str.length();
-    String repeated = StringUtils.repeat(" ", numSpaces);
-    return repeated;
+    StringBuffer sb = new StringBuffer();
+    for (int i = 0; i < numSpaces; i++) {
+      sb.append(" ");
+    }
+
+    return sb.toString();
+  }
+
+  public Directory getCurrentDirectory() {
+    return currentDirectory;
   }
 }
 

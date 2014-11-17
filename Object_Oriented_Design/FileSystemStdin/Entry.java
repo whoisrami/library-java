@@ -1,4 +1,4 @@
-package FileSystemSalesForce;
+package FileSystemStdin;
 
 /**
  * Author: Alex Yang
