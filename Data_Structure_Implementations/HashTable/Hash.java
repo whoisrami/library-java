@@ -7,7 +7,7 @@ import java.util.LinkedList;
  */
 public class Hash<K, V> {
   private final int MAX_SIZE = 5;
-  LinkedList<Cell<K, V>>[] items;
+  LinkedList<Cell<K, V>>[] items; //array of linked lists
 
   public Hash() {
     this.items = (LinkedList<Cell<K, V>>[]) new LinkedList[MAX_SIZE];

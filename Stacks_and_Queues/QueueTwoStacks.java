@@ -48,6 +48,7 @@ class QueueTwoStacks<T> {
     return stack2.peek();
   }
 
+  //before dequeing transfer all elements from stack1 to stack2, but only if stack2 is empty
   public T dequeue() {
     if (stack2.isEmpty()) {
       while (!stack1.isEmpty()) {

@@ -20,16 +20,41 @@ public class ReverseLinkedList {
     list.append(4);
     list.append(5);
 
-
+//    System.out.println(reverseIterative(list).toString());
+    System.out.println(reverseRecursive(list).toString());
   }
 
   //iteratively
   static Node<Integer> reverseIterative(Node<Integer> root) {
-    return null;
+    if (root == null || root.next == null) {
+      return root;
+    }
+
+    Node<Integer> original = root.next;
+    Node<Integer> reversed = root;
+    reversed.next = null;
+
+    while (original != null) {
+      Node<Integer> temp = original;
+      original = original.next; //study this!
+
+      temp.next = reversed;
+      reversed = temp;
+    }
+    return reversed;
   }
 
   //recursively
-  static Node<Integer> reverseRecursive(Node<Integer> root) {
-    return null;
+  static Node<Integer> reverseRecursive(Node<Integer> head) {
+    if (head == null || head.next == null) {
+      return head;
+    }
+
+    Node<Integer> reverse = reverseRecursive(head.next);
+
+    head.next.next = head;
+    head.next = null;
+
+    return reverse;
   }
 }

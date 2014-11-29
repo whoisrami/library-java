@@ -8,7 +8,7 @@ package LongestContiguousSum;
  * Description:
  * - find the sum of contiguous subarray within a one-dimensional array of numbers which has the largest sum.
  * Solution:
- * - N/A
+ * - kadanes algorithm
  */
 public class LongestContiguousSum {
   public static void main(String args[]) {

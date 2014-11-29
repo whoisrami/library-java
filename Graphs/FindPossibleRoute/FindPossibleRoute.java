@@ -38,7 +38,6 @@ public class FindPossibleRoute {
   //check if node is null, otherwise mark as visited, grab adjacent nodes and recurse if node is unvisited
   static boolean findDfs(AdjListDiGraph graph, Node start, Node end) {
     if (start == null) return false;
-    start.state = State.Status.Visiting;
     start.state = State.Status.Visited;
 
     for (Node v : start.getAdjacent()) {

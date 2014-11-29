@@ -13,10 +13,12 @@ package Fibonacci;
  */
 public class Fibonacci {
   public static void main (String args[]) {
-    System.out.println(fib(6));
+    System.out.println(fib(7));
 
     int[] cache = new int[10];
-    System.out.println(fibDP(6, cache));
+    System.out.println(fibDP(7, cache));
+
+    System.out.println(fibIterative(7));
   }
 
   static int fib(int n) {
@@ -31,5 +33,18 @@ public class Fibonacci {
     if (cache[n] != 0) return cache[n];
     cache[n] = fibDP(n - 1, cache) + fibDP(n - 2, cache);
     return cache[n];
+  }
+
+  static int fibIterative(int n) {
+    int f1 = 1;
+    int f2 = 0;
+    int fn = 0;
+    for (int i = 1; i < n; i++) { //one less loop since we initialize it at the first and second fib number already
+      fn = f1 + f2;
+      f2 = f1;
+      f1 = fn;
+    }
+
+    return fn;
   }
 }
