@@ -53,7 +53,7 @@ public class CheckBalanced {
     if (root == null)
       return 0;
     else
-      return Math.max(treeHeightDriver(root.left), treeHeightDriver(root.right))+1;
+      return 1 + Math.max(treeHeightDriver(root.left), treeHeightDriver(root.right));
   }
 
 

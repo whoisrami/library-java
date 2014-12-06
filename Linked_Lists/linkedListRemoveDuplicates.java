@@ -29,6 +29,7 @@ class linkedListRemoveDuplicates<T> extends linkedListGeneric<T> {
       System.out.println("Cannot remove node from empty linked list");
     }
 
+    //keep in mind they all point to the same list reference!
     Node<T> current = this.root;
     while(current != null) {
       Node<T> runner = current;
