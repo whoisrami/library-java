@@ -1,85 +1,95 @@
 package SpiralMatrix;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Author: Alex Yang
- * Date: 11/23/14
+ * Date: 12/11/14
  * Dependencies:
  * - N/A
  * Description:
- * - Print a matrix in clockwise order.
+ * - N/A
  * Solution:
  * - N/A
  */
 public class SpiralMatrix {
-  public static void main(String[] args) {
-    int[][] matrix = {{1,  2,   3,  4},
-            {5,  6,   7,  8},
-            {9,  10,  11, 12},
-            {13, 14,  15, 16},
-            {17, 18,  19, 20}};
+  public static void main(String args[]) {
+    int[][] matrix = {{1,  2,   3,  4, 97},
+            {5,  6,   7,  8, 98},
+            {9,  10,  11, 12, 99},
+            {13, 14,  15, 16, 100},
+            {17, 18,  19, 20, 101}};
+    int[][] matrix2 = {{1,2,3,4},
+            {5,6,7, 8},
+            {9,10,11, 12}};
 
-    ArrayList<Integer> results = spiralPrint(matrix);
+    int[][] matrix3 = {{11,  12,   13,  14, 15},
+            {21,  22,   23,  24, 25},
+            {31,  32,  33, 34, 35},
+            {41, 42,  43, 44, 45}};
+
+    List<Integer> results = spiralPrint(matrix);
     for (int i : results) {
       System.out.print(i);
       System.out.print(",");
     }
+    System.out.println();
+
+    List<Integer> results2 = spiralPrint(matrix2);
+    for (int i : results2) {
+      System.out.print(i);
+      System.out.print(" ");
+    }
+
+    System.out.println();
+    List<Integer> results3 = spiralPrint(matrix3);
+    for (int i : results3) {
+      System.out.print(i);
+      System.out.print(" ");
+    }
   }
 
-  static ArrayList<Integer> spiralPrint(int[][] matrix) {
-    ArrayList<Integer> results = new ArrayList<Integer>();
-
-    if (matrix == null || matrix.length == 0) return results;
-
-    int row = matrix.length;
-    int col = matrix[0].length;
-
+  static List<Integer> spiralPrint(int[][] matrix) {
     int x = 0;
     int y = 0;
 
-    while (row > 0 && col > 0) {
-      //if one row or column left, cannot form circle, so break
-      if (row == 1) {
-        for (int i = 0; i < col; i++) {
-          results.add(matrix[x][y++]);
-          break;
-        }
-      } else if (col == 1) {
-        for (int i = 0; i < row; i++) {
-          results.add(matrix[x++][y]);
-        }
+    int rows = matrix.length - 1;
+    int cols = matrix[0].length - 1;
+
+    List<Integer> results = new ArrayList<>();
+    while (rows >= 0 || cols >= 0) {
+      if (rows == 0 && cols == 0) {
+        results.add(matrix[x][y]);
         break;
       }
 
-      //move right
-      for (int i = 0; i < col - 1; i++) {
-        results.add(matrix[x][y++]);
+      for (int i = 0; i < cols; i++) {
+        results.add(matrix[x][y]);
+        y++;
       }
 
-      //move down on the right (note at this point y is already positioned at the last column)
-      for (int i = 0; i < row - 1; i++) {
-        results.add(matrix[x++][y]);
+      for (int i = 0; i < rows; i++) {
+        results.add(matrix[x][y]);
+        x++;
       }
 
-      //move bottom from right to left
-      for (int i = 0; i < col - 1; i++) {
-        results.add(matrix[x][y--]);
+      for (int i = cols; i > 0; i--) {
+        results.add(matrix[x][y]);
+        y--;
       }
 
-      //move up from left to top
-      for (int i = 0; i < row - 1; i++) {
-        results.add(matrix[x--][y]);
+      for (int i = rows; i > 0; i--) {
+        results.add(matrix[x][y]);
+        x--;
       }
 
       x++;
       y++;
-      row = row-2;
-      col = col-2;
+      rows = rows - 2;
+      cols = cols - 2;
     }
 
     return results;
   }
-
-  //TODO: recursive solution here: http://www.programcreek.com/2013/01/leetcode-spiral-matrix-java/
 }
