@@ -10,6 +10,8 @@ package KthSmallestTwoArrays;
  * Solution:
  * - N/A
  */
+
+//TODO: this currently only works for arrays of equal size
 public class KthSmallestTwoArrays {
   public static void main(String args[]) {
     int[] arr1 = new int[]{1,3,5,7,9};
