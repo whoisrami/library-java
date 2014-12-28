@@ -76,4 +76,30 @@ public class HelperMethods {
       System.out.println();
     }
   }
+
+
+  public static void toFullBinaryString(int a) {
+    String s = "";
+    for (int i = 0; i < 32; i++) {
+      Integer lsb = new Integer(a & 1);
+      s = lsb.toString() + s;
+      a = a >> 1;
+    }
+    System.out.println(s);
+  }
+
+  public static String toBaseNString(int a, int base) {
+
+    String s = "";
+    while (true) {
+      int lastdigit = a % base;
+      s = lastdigit + s;
+      a = a / base;
+      if (a == 0)
+        break;
+    }
+
+    return s;
+  }
+
 }
