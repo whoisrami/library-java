@@ -48,7 +48,7 @@ public class InOrderSuccessor {
       return n;
     } else {
       while (n.parent != null) {
-        if (n.parent.left == n) {
+        if (n.parent.left == n) { //check if you are going up from the left
           break;
         }
         n = n.parent;

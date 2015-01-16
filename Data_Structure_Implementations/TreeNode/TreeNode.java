@@ -15,10 +15,10 @@ package TreeNode;
 public class TreeNode {
   public static void main(String args[]) {
     TreeNode t = new TreeNode(5);
-    t.insertInOrder(6);
-    t.insertInOrder(2);
-    t.insertInOrder(1);
-    t.insertInOrder(3);
+    t.insert(6);
+    t.insert(2);
+    t.insert(1);
+    t.insert(3);
     t.print();
   }
 
@@ -48,18 +48,18 @@ public class TreeNode {
     }
   }
 
-  public void insertInOrder(int d) {
+  public void insert(int d) {
     if (d <= data) {
       if (left == null) {
         setLeftChild(new TreeNode(d));
       } else {
-        left.insertInOrder(d);
+        left.insert(d);
       }
     } else {
       if (right == null) {
         setRightChild(new TreeNode(d));
       } else {
-        right.insertInOrder(d);
+        right.insert(d);
       }
     }
     size++;
