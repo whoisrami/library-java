@@ -1,5 +1,3 @@
-import org.codehaus.groovy.tools.DocGenerator;
-
 import java.util.LinkedList;
 
 /**
