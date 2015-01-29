@@ -38,39 +38,3 @@ public class DiGraph {
   }
 }
 
-class Node {
-  private ArrayList<Node> adjacent = new ArrayList<Node>(); //max input size
-  public int adjacentCount = 0;
-  public State.Status state;
-  public String vertex;
-
-  public Node(String vertex) {
-    this.vertex = vertex;
-  }
-
-  //code to keep adjcanet
-  public void addAdjacent(Node x) {
-    adjacent.add(x);
-  }
-
-  public ArrayList<Node> getAdjacent() {
-    return adjacent;
-  }
-
-  public String getVertex() {
-    return vertex;
-  }
-
-  public void printAdjacent() {
-    for (Node n : adjacent) {
-      System.out.print(n.vertex + " ");
-    }
-    System.out.println();
-  }
-}
-
-class State {
-  public enum Status {
-    Unvisited, Visited, Visiting;
-  }
-}
