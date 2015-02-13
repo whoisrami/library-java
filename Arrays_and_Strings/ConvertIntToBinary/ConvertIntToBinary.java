@@ -8,7 +8,9 @@ package ConvertIntToBinary;
  * Description:
  * - Write a method which transforms an integer into a binary number, no libraries
  * Solution:
- * - N/A
+ * - take whatever int it is, mod it by 2 to get the bit.
+ * - insert that bit in front of the stringbuffer.
+ * - divide int by 2, keep doing this while the value is greater than 0
  */
 public class ConvertIntToBinary {
   public static void main(String args[]) {
