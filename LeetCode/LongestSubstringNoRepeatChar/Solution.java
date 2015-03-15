@@ -36,6 +36,7 @@ public class Solution {
       char currentChar = s.charAt(i);
       Integer lastSeenIndex = map.get(currentChar);
       if (lastSeenIndex != null && lastSeenIndex >= startIndex) { //repeated char found, and lastSeenIndex > startIndex so that the repeated cases in between are covered, e.g. 'abba'
+        //more specifically lastSeenIndex > startIndex so that if we are traversing the last character 'a' in 'abba' it doesnt wrongly give us 3 instead of 2.  It shouldn't calculate the difference from the first 'a' because the starting point is already past it.
         max = Math.max(max, i - startIndex);
         startIndex = lastSeenIndex + 1;
       }
@@ -44,6 +45,7 @@ public class Solution {
     }
 
     //final check at the end in case a repeating char wasnt found up until the end
+    //e.g. babac, will get bac -> 3
     max = Math.max(max, s.length() - startIndex);
     return max;
   }
