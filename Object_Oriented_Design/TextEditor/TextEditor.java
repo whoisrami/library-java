@@ -10,6 +10,7 @@ import java.util.List;
  * - N/A
  * Description:
  * - Implementation of Text Editor using a simple gap buffer.
+ * - http://scienceblogs.com/goodmath/2009/02/18/gap-buffers-or-why-bother-with-1/
  * Solution:
  * - amortized O(1) for local inserts
  * - O(1) for moving around cursor, O(n) for arbitrary cursor motions
